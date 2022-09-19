@@ -9,9 +9,9 @@ SeqList L;
 //Operations
 bool listInsert(SeqList &L,int insertPosition,int insertData);
 bool listDelete(SeqList &L,int deletePosition);
-int listLocate(SeqList &L,int targetData);
+int  listLocate(SeqList &L,int targetData);
 
-
+//All the position start at ZERO
 int main()
 {
 // Init SequenceList
@@ -21,10 +21,10 @@ L.data=(int*)malloc(sizeof(int)*initSize);
 
 
 }
-bool listInsert(SeqList &L,int insertPosition,int insertData)
+bool listInsert(SeqList &L,int insertPosition,int insertData)//Insert a data BEFORE insertPosition
 {
     // Check whether legal
-    if(insertPosition<1 ||insertPosition>L.currentLength+1)
+    if(insertPosition<0 ||insertPosition>L.currentLength+1)
     {
         return false;
     }
@@ -36,4 +36,23 @@ bool listInsert(SeqList &L,int insertPosition,int insertData)
     L.data[insertPosition-1]=insertData;
     L.currentLength++;
     return true;
+}
+bool listDelete(SeqList &L,int deletePosition,int &e)
+{
+    //Check whether legal
+    if(deletePosition>L.currentLength || deletePosition<0)
+    {
+        return false;
+    }
+    e=L.data[deletePosition-1];
+    for(int i=deletePosition;i<L.currentLength;i++)
+    {
+        L.data[i-1]=L.data[i];
+    }
+    L.currentLength--;
+    return true;
+}
+int locateElement(SeqList L,int e)
+{
+
 }
