@@ -1,3 +1,6 @@
+// 李唐 21211010
+// 100%自己完成
+// 这是我的心路历程：https://github.com/TANG617/CS-Learning
 #include<stdio.h>
 #include<iostream>
 #include<stdlib.h>

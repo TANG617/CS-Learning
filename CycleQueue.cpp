@@ -1,6 +1,12 @@
 #include<stdio.h>
-#include<stdlib.h>
-#define MAXSIZE 4
+
+#define MAXSIZE 1001
+struct List{
+    int list[MAXSIZE];
+    // int cursor;
+    int front,rear;
+}Queue;
+
 void UpdateCycleCursor(int *cursor,int operation)
 {
     
@@ -22,10 +28,34 @@ void UpdateCycleCursor(int *cursor,int operation)
     // Queue.rear=(Queue.rear+1)%MAXSIZE;
     //Update the cursor status after every operation
 }
+
+void init(List &Queue)
+{
+    Queue.front=Queue.rear=1;
+}
+//Use a spacer to check whether it's full or empty
+bool isEmpty(List L)
+{
+    return Queue.front==Queue.rear?1:0;
+}
+bool isFull(List L)
+{
+    return Queue.front==Queue.rear+1?1:0;
+}
+
+
+bool PushBack(List &L,int data)
+{
+    
+    UpdateCycleCursor();
+    if(isFull) return 0;
+    else
+    {
+        Queue.list[Queue.rear++]=data;
+    }
+}
+
 int main()
 {
-    int a=1;
-    UpdateCycleCursor(&a,-3);
-    printf("%d",a);
+
 }
-    
