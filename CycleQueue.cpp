@@ -31,7 +31,8 @@ void UpdateCycleCursor(int *cursor,int operation)
 
 void init(List &Queue)
 {
-    Queue.front=Queue.rear=1;
+    Queue.front=2;
+    Queue.rear=1;
 }
 //Use a spacer to check whether it's full or empty
 bool isEmpty(List L)
@@ -47,7 +48,6 @@ bool isFull(List L)
 bool PushBack(List &L,int data)
 {
     
-    UpdateCycleCursor();
     if(isFull) return 0;
     else
     {
