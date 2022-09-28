@@ -1,19 +1,22 @@
 #include<iostream>
+#include<stdlib.h>
+#include<string.h>
 using namespace std;
 #define PARK_SIZE 1001
 int numCar=0;
-Car * LastCar=nullptr;
-Car * FirstCar=nullptr;
-Car * cursorPark=nullptr;
-//Make sure first and last is global
 struct  Car
 {
     string carID;
     Car * prior;
     Car * next;
-    bool inPark=1;
+    bool inPark;
     int position;
 };
+
+Car * LastCar=nullptr;
+Car * FirstCar=nullptr;
+Car * cursorPark=nullptr;
+
 
 void InitCar()
 {
@@ -30,7 +33,7 @@ void updateStatus()
 {
     Car *cursorCar=FirstCar;
     int positionCar=0;
-    while((*cursorCar).next!=nullptr)
+    while((cursorCar->next)!=nullptr)
     {
         (*cursorCar).position=positionCar;
         if(positionCar<PARK_SIZE)
@@ -49,6 +52,7 @@ void updateStatus()
         cursorCar=(*cursorCar).next;
         positionCar++;
     }
+    free(cursorCar);
         
 }
 
@@ -60,15 +64,16 @@ void ShowAllCar()
     {
         (*cursorCar).position=positionCar;
         
-        printf("在停车场%s第%d位的汽车车牌为%s",cursorCar->inPark?"在":"不在",cursorCar->position-PARK_SIZE*(!cursorCar->inPark),cursorCar->carID);
+        printf("在停车场%s第%d位的汽车车牌为",cursorCar->inPark?"在":"不在",cursorCar->position-PARK_SIZE*(!cursorCar->inPark));//,cursorCar->carID);
         cursorCar=(*cursorCar).next;
         positionCar++;
     }
+    free(cursorCar);
         
 }
 
 
-bool PushBackCar(string ID)// add a new car at the last
+bool PushBackCar(string ID)
 {
     Car * temp=(Car*)malloc(sizeof(Car));
     temp->carID=ID;
@@ -77,6 +82,8 @@ bool PushBackCar(string ID)// add a new car at the last
     LastCar=temp;
     numCar++;
     updateStatus();
+    free(temp);
+    return 1;
 }
 
 bool PushFrontCar(string ID)
@@ -88,16 +95,19 @@ bool PushFrontCar(string ID)
     FirstCar=temp;
     numCar++;
     updateStatus();
+    free(temp);
+    return 1;
 }
 
 void PopParkedCar()
 {
     Car *priorCar=(*cursorPark).prior;
     (*priorCar).next=nullptr;
-    free(*LastCar);
+    free(LastCar);
     LastCar=priorCar;
     numCar--;
     updateStatus();
+    free(priorCar);
 }
 
 
@@ -118,7 +128,7 @@ bool SearchCar(string targetID,Car  *targetPosition)
     }
         targetPosition=nullptr;
         return 0;
-    
+    free(cursorCar);
     
 }
 
