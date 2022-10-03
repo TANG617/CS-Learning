@@ -86,18 +86,6 @@ bool PushBackCar(string ID)
     return 1;
 }
 
-bool PushFrontCar(string ID)
-{
-    Car * temp=(Car*)malloc(sizeof(Car));
-    temp->carID=ID;
-    temp->prior=nullptr;
-    temp->next=FirstCar;
-    FirstCar=temp;
-    numCar++;
-    updateStatus();
-    free(temp);
-    return 1;
-}
 
 void PopParkedCar()
 {
@@ -135,7 +123,7 @@ bool SearchCar(string targetID,Car  *targetPosition)
 int main()
 {
 // 进入停车场
-PushBackCar("BJTU0001");
+if(PushBackCar("BJTU0001")) return 0;
 // 离开停车场
 PopParkedCar();
 //按车牌号查找车辆位置

@@ -24,8 +24,7 @@ void UpdateCycleCursor(int *cursor,int operation)
 }
 int main()
 {
-    int a=1;
-    UpdateCycleCursor(&a,-3);
-    printf("%d",a);
+    printf("%d %d %d %d %d %d",'(',')','[',']','{','}');
+    
 }
     
