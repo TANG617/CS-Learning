@@ -1,30 +1,36 @@
-#include<stdio.h>
-#include<stdlib.h>
-#define MAXSIZE 4
-void UpdateCycleCursor(int *cursor,int operation)
+#include<iostream>
+using namespace std;
+class TestForPTR
 {
+private:
     
-    if((*cursor+operation)>0)
-    {
-        *cursor=(*cursor+operation)%MAXSIZE;
-        if (*cursor==0)
-        {
-            *cursor=MAXSIZE;
-        }
-        //When it's just can be divided, we use the last number of element nor the 0
-        
-    }
-    else
-    {
-        *cursor=(*cursor+operation+MAXSIZE);
-    }
-    // Queue.front=(Queue.front+1)%MAXSIZE;
-    // Queue.rear=(Queue.rear+1)%MAXSIZE;
-    //Update the cursor status after every operation
+public:
+    TestForPTR();
+    ~TestForPTR();
+    int a;
+    int b;
+};
+
+TestForPTR::TestForPTR()
+{
+
 }
+
+TestForPTR::~TestForPTR()
+{
+}
+
+
 int main()
 {
-    printf("%d %d %d %d %d %d",'(',')','[',']','{','}');
-    
+    TestForPTR anything;
+    TestForPTR anything2;
+    anything.a=10;
+    anything.b=10;
+    anything2.a=10;
+    anything2.b=10;
+    cout<<&anything.a<<endl<<&anything.b<<endl;
+    cout<<&anything2.a<<endl<<&anything2.b;
+
+
 }
-    
