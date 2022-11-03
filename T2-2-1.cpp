@@ -9,12 +9,10 @@ struct Node{
 
 void createChild(Node *father,int degree)
 {
-    Node firstChild;
-    firstChild.L=fat;
     Node *temp=father;
 
     //wider
-    for (int i = 1; i < degree; i++)
+    for (int i = 0; i < degree; i++)
     {
         temp->R=new Node;
         cin>>temp->data;
@@ -35,10 +33,18 @@ void createLevel(Node *firstNode)
     }
 }
 
-
+// int list[1001];
 
 int main()
 {
-    
-
+    while(1)
+    {
+        int L,R;
+        cin>>L;
+        int list[22];
+        
+    }
+    Node rootNode;
+    int initDdegree;//=list['#'];
+    createChild(&rootNode,initDdegree);
 }
