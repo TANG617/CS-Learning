@@ -2,7 +2,7 @@
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 16:59:45
  * @LastEditTime: 2023-09-25 19:56:07
- * @FilePath: /CS-Learning/DataStruct-2023/Node.h
+ * @FilePath: /CS-Learning/DataStruct-2023/NodeStruct.h
  * @Description: 
  */
 #ifndef  Node_H
@@ -19,7 +19,7 @@ public:
     string NodeData;
     bool isVisited;
 
-    // Node(NodeStruct* _preNode,NodeStruct* _nexNode);
+    // NodeStruct(NodeStruct* _preNode,NodeStruct* _nexNode);
     NodeStruct(string data);
 
 

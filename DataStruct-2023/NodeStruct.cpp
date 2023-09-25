@@ -1,13 +1,13 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 16:59:35
- * @LastEditTime: 2023-09-25 19:56:24
- * @FilePath: /CS-Learning/DataStruct-2023/Node.cpp
+ * @LastEditTime: 2023-09-25 20:39:58
+ * @FilePath: /CS-Learning/DataStruct-2023/NodeStruct.cpp
  * @Description: 
  */
-#include "Node.h"
+#include "NodeStruct.h"
 using namespace std;
-    // Node(NodeStruct* _preNode,NodeStruct* _nexNode);
+    // NodeStruct(NodeStruct* _preNode,NodeStruct* _nexNode);
 NodeStruct::NodeStruct(string data)
 {
     this->NodeData = data;

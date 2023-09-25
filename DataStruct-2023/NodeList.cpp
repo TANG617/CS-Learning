@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 18:13:39
- * @LastEditTime: 2023-09-25 20:38:07
+ * @LastEditTime: 2023-09-25 20:53:34
  * @FilePath: /CS-Learning/DataStruct-2023/NodeList.cpp
  * @Description: 
  */
@@ -47,9 +47,22 @@ void NodeList::insertNode_tal(NodeStruct* _insertedNode){
     insertNode(_insertedNode);
 }
 
-void NodeList::removeNode(NodeStruct* _deletedNode){ //default remove 'current' node
-        _currentNode->_nextNode->_previousNode = _currentNode->_previousNode;
-        _currentNode->_previousNode->_nextNode = _currentNode->_nextNode;
+void NodeList::removeNode(){ //default remove 'current' node
+        if(_currentNode->_nextNode != nullptr){ //current is the last
+            _currentNode->_nextNode->_previousNode = _currentNode->_previousNode;
+        }
+        else{
+            _tailNode = _currentNode->_previousNode;
+        }
+        
+        if(_currentNode->_previousNode != nullptr){
+            _currentNode->_previousNode->_nextNode = _currentNode->_nextNode;
+        }
+        else{
+            _headNode = _currentNode->_nextNode;
+        }
+        // free(_currentNode); //清空内存->内存溢出:)
+        _currentNode = _headNode;
         size--;
     }
 void NodeList::traverseNodeList(function<void(NodeStruct*)>traverseOperation){

@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 19:50:44
- * @LastEditTime: 2023-09-25 20:34:18
+ * @LastEditTime: 2023-09-25 20:48:17
  * @FilePath: /CS-Learning/DataStruct-2023/main.cpp
  * @Description: 
  */
@@ -20,6 +20,10 @@ int main()
     List.insertNode(&node1);
     NodeStruct node2("C");
     List.insertNode(&node2);
+    List._getNode(0);
+    // NodeStruct node3("D");
+    // List.insertNode(&node3);
+    List.removeNode();
     // traverseOperation(&node);
     // return 0;
     List.traverseNodeList(traverseOperation);

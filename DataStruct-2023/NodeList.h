@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 18:13:50
- * @LastEditTime: 2023-09-25 20:09:43
+ * @LastEditTime: 2023-09-25 20:43:48
  * @FilePath: /CS-Learning/DataStruct-2023/NodeList.h
  * @Description: 
  */
@@ -9,7 +9,7 @@
 #define NodeList_H
 #include <iostream>
 #include <functional>
-#include "Node.h"
+#include "NodeStruct.h"
 using namespace std;
 class NodeList
 {
@@ -27,7 +27,7 @@ public:
     void insertNode_nex(NodeStruct* _insertedNode);
     void insertNode_hed(NodeStruct* _insertedNode);
     void insertNode_tal(NodeStruct* _insertedNode);
-    void removeNode(NodeStruct* _deletedNode);
+    void removeNode();
     void traverseNodeList(function<void(NodeStruct*)>traverseOperation);
     NodeStruct* _getNode(int rank);
     NodeStruct* _findNode(NodeStruct targetNode);

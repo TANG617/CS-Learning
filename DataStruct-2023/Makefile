@@ -7,7 +7,7 @@ CC = g++
 CFLAGS = -Wall -std=c++11
 
 # 源文件
-SOURCES = main.cpp Node.cpp NodeList.cpp
+SOURCES = main.cpp NodeStruct.cpp NodeList.cpp
 
 # 目标文件
 TARGET = NodeList.out
