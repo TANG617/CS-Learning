@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 18:13:39
- * @LastEditTime: 2023-09-25 20:03:45
+ * @LastEditTime: 2023-09-25 20:38:07
  * @FilePath: /CS-Learning/DataStruct-2023/NodeList.cpp
  * @Description: 
  */
@@ -17,8 +17,8 @@ NodeList::NodeList(NodeStruct* _headNode){
 void NodeList::insertNode(NodeStruct* _insertedNode){ //insert to 'current.next'
         // _currentNode->_nextNode = _insertedNode;
         _insertedNode->_previousNode = _currentNode;
-        _currentNode->_nextNode->_previousNode = _insertedNode;
         _insertedNode->_nextNode = _currentNode->_nextNode;
+        _currentNode->_nextNode = _insertedNode;
         size++;
         _currentNode = _currentNode->_nextNode; //move the pointer to the new node
         if (_currentNode->_nextNode == nullptr){
@@ -52,7 +52,6 @@ void NodeList::removeNode(NodeStruct* _deletedNode){ //default remove 'current' 
         _currentNode->_previousNode->_nextNode = _currentNode->_nextNode;
         size--;
     }
-
 void NodeList::traverseNodeList(function<void(NodeStruct*)>traverseOperation){
     this->_currentNode = this->_headNode;
     while(this->_currentNode != nullptr){
