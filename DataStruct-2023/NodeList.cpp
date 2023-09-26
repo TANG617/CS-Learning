@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 18:13:39
- * @LastEditTime: 2023-09-26 09:55:18
+ * @LastEditTime: 2023-09-26 19:02:56
  * @FilePath: /CS-Learning/DataStruct-2023/NodeList.cpp
  * @Description: 
  */
@@ -13,7 +13,6 @@ NodeList::NodeList(NodeStruct* _headNode){
     this->_tailNode = _headNode;
     size = 1;
 }
-
 void NodeList::insertNode(NodeStruct* _insertedNode){ //insert to 'current.next'
         // _currentNode->_nextNode = _insertedNode;
         // printf("_currentADDR:  ");
@@ -35,7 +34,6 @@ void NodeList::insertNode(NodeStruct* _insertedNode){ //insert to 'current.next'
         _currentNode->_nextNode->_previousNode = _insertedNode;
         // _currentNode = _currentNode->_nextNode; //move the pointer to the new node
     }
-
 void NodeList::insertNode_pre(NodeStruct* _insertedNode){
     if (_currentNode->_previousNode == nullptr){
         _currentNode->_previousNode = _insertedNode;
@@ -56,7 +54,6 @@ void NodeList::insertNode_tal(NodeStruct* _insertedNode){
     _currentNode = _tailNode;
     insertNode(_insertedNode);
 }
-
 void NodeList::removeNode(){ //default remove 'current' node
         if(_currentNode->_nextNode != nullptr){ //current is the last
             _currentNode->_nextNode->_previousNode = _currentNode->_previousNode;
@@ -74,7 +71,25 @@ void NodeList::removeNode(){ //default remove 'current' node
         // free(_currentNode); //清空内存->内存溢出:)
         _currentNode = _headNode;
         size--;
-    }
+}
+void NodeList::removeNode(NodeStruct* _removedNode){ //default remove '_removedNode' node
+        if(_removedNode->_nextNode != nullptr){ //current is the last
+            _removedNode->_nextNode->_previousNode = _removedNode->_previousNode;
+        }
+        else{
+            _tailNode = _removedNode->_previousNode;
+        }
+        
+        if(_removedNode->_previousNode != nullptr){
+            _removedNode->_previousNode->_nextNode = _removedNode->_nextNode;
+        }
+        else{
+            _headNode = _removedNode->_nextNode;
+        }
+        // free(_currentNode); //清空内存->内存溢出:)
+        _removedNode = _headNode;
+        size--;
+}
 void NodeList::traverseNodeList(function<void(NodeStruct*)>traverseOperation){
     NodeStruct* iter_currentNode = this->_headNode;
     while(iter_currentNode != nullptr){
@@ -91,7 +106,6 @@ NodeStruct* NodeList::NodeList::_getNode(int rank){ //modify 'current'
     }
     return _currentNode; 
 }
-
 NodeStruct* NodeList::_findNode(NodeStruct targetNode) //modify 'current'
 {
     this->_currentNode = this->_headNode;
@@ -106,6 +120,10 @@ NodeStruct* NodeList::_findNode(NodeStruct targetNode) //modify 'current'
     return nullptr;
    
 }
-
-
+NodeStruct* NodeList::_getHeadNode(){
+    return _headNode;
+}
+NodeStruct* NodeList::_getTailNode(){
+    return _tailNode;
+}
    

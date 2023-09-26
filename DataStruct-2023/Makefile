@@ -7,10 +7,10 @@ CC = g++
 CFLAGS = -Wall -std=c++11
 
 # 源文件
-SOURCES = main.cpp NodeStruct.cpp NodeList.cpp
+SOURCES = main_Stack.cpp NodeStruct.cpp NodeList.cpp Stack.cpp
 
 # 目标文件
-TARGET = NodeList.out
+TARGET =DS.out
 
 all: $(TARGET)
 
