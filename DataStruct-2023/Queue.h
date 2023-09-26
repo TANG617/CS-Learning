@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-26 16:34:51
- * @LastEditTime: 2023-09-26 19:10:56
+ * @LastEditTime: 2023-09-26 20:08:29
  * @FilePath: /CS-Learning/DataStruct-2023/Queue.h
  * @Description: 
  */
@@ -11,6 +11,7 @@
 class Queue : public NodeList{
     private:
     public:
+        Queue();
         Queue(NodeStruct* Head);
         NodeStruct* _getFront();
         void deQueue(); 

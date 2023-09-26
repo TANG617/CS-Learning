@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 16:59:35
- * @LastEditTime: 2023-09-26 09:32:04
+ * @LastEditTime: 2023-09-26 22:55:07
  * @FilePath: /CS-Learning/DataStruct-2023/NodeStruct.cpp
  * @Description: 
  */
@@ -21,9 +21,12 @@ NodeStruct::NodeData::NodeData(string *_nodeName, string *_nodeTitle, int ID){
     title = *_nodeTitle;
     idnum = ID;
 }
-NodeStruct::NodeData::NodeData(const string& nodeName, const string& nodeTitle, int ID) :
-    name(nodeName), title(nodeTitle), idnum(ID) {}
-
+NodeStruct::NodeData::NodeData(string *_nodeName){
+    name = *_nodeName;
+}
+// NodeStruct::NodeData::NodeData(string& nodeName, string& nodeTitle, int ID) :
+//     name(nodeName), title(nodeTitle), idnum(ID) {}
+// NodeStruct::NodeData::NodeData(const string& nodeName):name(nodeName){}
 bool NodeStruct::NodeData::operator==(const NodeData& other) const{
     return (name == other.name) && (title == other.title) && (idnum == other.idnum);
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 18:13:50
- * @LastEditTime: 2023-09-26 19:00:45
+ * @LastEditTime: 2023-09-26 23:59:31
  * @FilePath: /CS-Learning/DataStruct-2023/NodeList.h
  * @Description: 
  */
@@ -24,9 +24,7 @@ public:
     int size;   
     NodeList(NodeStruct* _headNode);
     NodeList();
-    void insertNode(NodeStruct* _insertedNode);
-    void insertNode_pre(NodeStruct* _insertedNode);
-    void insertNode_nex(NodeStruct* _insertedNode);
+    void insertNode(NodeStruct* _desNode, NodeStruct* _insertedNode);
     void insertNode_hed(NodeStruct* _insertedNode);
     void insertNode_tal(NodeStruct* _insertedNode);
     void removeNode();

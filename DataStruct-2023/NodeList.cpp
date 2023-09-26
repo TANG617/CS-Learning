@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 18:13:39
- * @LastEditTime: 2023-09-26 19:02:56
+ * @LastEditTime: 2023-09-27 00:06:31
  * @FilePath: /CS-Learning/DataStruct-2023/NodeList.cpp
  * @Description: 
  */
@@ -11,48 +11,41 @@ NodeList::NodeList(NodeStruct* _headNode){
     this->_headNode = _headNode;
     this->_currentNode = _headNode;
     this->_tailNode = _headNode;
-    size = 1;
+    size = 0;
 }
-void NodeList::insertNode(NodeStruct* _insertedNode){ //insert to 'current.next'
-        // _currentNode->_nextNode = _insertedNode;
+void NodeList::insertNode(NodeStruct* _desNode, NodeStruct* _insertedNode){ //insert to 'current.next'
+        // _desNode->_nextNode = _insertedNode;
         // printf("_currentADDR:  ");
-        cout<<_currentNode<<endl;
+        // cout<<_desNode<<endl;
         size++;
-        _insertedNode->_previousNode = _currentNode;
-        _insertedNode->_nextNode = _currentNode->_nextNode;
+        _insertedNode->_previousNode = _desNode;
+        _insertedNode->_nextNode = _desNode->_nextNode;
         // return;
 
-        if (_currentNode->_nextNode == nullptr){
-            _currentNode->_nextNode = _insertedNode;
-            _tailNode = _currentNode->_nextNode;
-            // _currentNode = _currentNode->_nextNode;
+        if (_desNode->_nextNode == nullptr){
+            _desNode->_nextNode = _insertedNode;
+            _tailNode = _desNode->_nextNode;
+            // _desNode = _desNode->_nextNode;
             // printf("YYYYY");
             return;
         }
         
-        _currentNode->_nextNode = _insertedNode;
-        _currentNode->_nextNode->_previousNode = _insertedNode;
-        // _currentNode = _currentNode->_nextNode; //move the pointer to the new node
+        _desNode->_nextNode = _insertedNode;
+        _desNode->_nextNode->_previousNode = _insertedNode;
+        // _desNode = _desNode->_nextNode; //move the pointer to the new node
     }
-void NodeList::insertNode_pre(NodeStruct* _insertedNode){
-    if (_currentNode->_previousNode == nullptr){
-        _currentNode->_previousNode = _insertedNode;
-        _insertedNode->_nextNode = _currentNode;
-        return;
-    }
-    _currentNode = _currentNode->_previousNode;
-    insertNode(_insertedNode);
-}
-void NodeList::insertNode_nex(NodeStruct* _insertedNode){
-    insertNode(_insertedNode);
-}
 void NodeList::insertNode_hed(NodeStruct* _insertedNode){
-    _currentNode = _headNode;
-    insertNode(_insertedNode);
+    if(_headNode->_nextNode != nullptr){
+        insertNode(_headNode->_nextNode,_insertedNode);
+    }
+    else{
+        insertNode(_headNode,_insertedNode);
+    }
+    
 }
 void NodeList::insertNode_tal(NodeStruct* _insertedNode){
-    _currentNode = _tailNode;
-    insertNode(_insertedNode);
+    insertNode(_tailNode,_insertedNode);
+    _tailNode = _insertedNode;
 }
 void NodeList::removeNode(){ //default remove 'current' node
         if(_currentNode->_nextNode != nullptr){ //current is the last
@@ -78,25 +71,27 @@ void NodeList::removeNode(NodeStruct* _removedNode){ //default remove '_removedN
         }
         else{
             _tailNode = _removedNode->_previousNode;
+            _removedNode->_previousNode->_nextNode = nullptr;
         }
         
-        if(_removedNode->_previousNode != nullptr){
+        if(_removedNode->_previousNode != _headNode ){
             _removedNode->_previousNode->_nextNode = _removedNode->_nextNode;
         }
         else{
-            _headNode = _removedNode->_nextNode;
+            _headNode->_nextNode = _removedNode->_nextNode;
+            _removedNode->_nextNode->_previousNode = _headNode;
         }
         // free(_currentNode); //清空内存->内存溢出:)
-        _removedNode = _headNode;
+        // _removedNode = _headNode;
         size--;
 }
 void NodeList::traverseNodeList(function<void(NodeStruct*)>traverseOperation){
     NodeStruct* iter_currentNode = this->_headNode;
-    while(iter_currentNode != nullptr){
+    do{
         iter_currentNode->isVisited = 1;
         traverseOperation(iter_currentNode);
         iter_currentNode = iter_currentNode->_nextNode;
-    }
+    }while(iter_currentNode != _tailNode);
 }
 NodeStruct* NodeList::NodeList::_getNode(int rank){ //modify 'current'
     this->_currentNode = this->_headNode;
@@ -108,14 +103,14 @@ NodeStruct* NodeList::NodeList::_getNode(int rank){ //modify 'current'
 }
 NodeStruct* NodeList::_findNode(NodeStruct targetNode) //modify 'current'
 {
-    this->_currentNode = this->_headNode;
-    while(this->_currentNode != nullptr){
-        this->_currentNode->isVisited = 1;
-        if(this->_currentNode->Data == targetNode.Data)
+    NodeStruct* _cursorNode = _headNode;
+    while(_cursorNode != nullptr){
+        _cursorNode->isVisited = 1;
+        if(_cursorNode->Data == targetNode.Data)
         {
-            return _currentNode;
+            return _cursorNode;
         }
-        this->_currentNode = this->_currentNode->_nextNode;
+        _cursorNode = _cursorNode->_nextNode;
     }
     return nullptr;
    

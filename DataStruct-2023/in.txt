@@ -1,0 +1,16 @@
+2
+2
+enter
+1
+enter
+2
+enter
+3
+traverse
+exit
+traverse
+
+
+
+
+\n
