@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 18:13:50
- * @LastEditTime: 2023-09-25 20:43:48
+ * @LastEditTime: 2023-09-26 09:36:01
  * @FilePath: /CS-Learning/DataStruct-2023/NodeList.h
  * @Description: 
  */
@@ -14,13 +14,14 @@ using namespace std;
 class NodeList
 {
 private:
-    NodeStruct* _headNode;
-    NodeStruct* _currentNode;
-    NodeStruct* _tailNode;
-    int size;
+    
     // void traverseOperation(NodeStruct* _currentNode);
     // NodeStruct* _matchNode(NodeStruct targetNode);
 public:
+    NodeStruct* _headNode;
+    NodeStruct* _currentNode;
+    NodeStruct* _tailNode;
+    int size;   
     NodeList(NodeStruct* _headNode);
     void insertNode(NodeStruct* _insertedNode);
     void insertNode_pre(NodeStruct* _insertedNode);

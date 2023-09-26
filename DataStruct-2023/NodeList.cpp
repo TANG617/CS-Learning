@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 18:13:39
- * @LastEditTime: 2023-09-25 20:53:34
+ * @LastEditTime: 2023-09-26 09:55:18
  * @FilePath: /CS-Learning/DataStruct-2023/NodeList.cpp
  * @Description: 
  */
@@ -16,14 +16,24 @@ NodeList::NodeList(NodeStruct* _headNode){
 
 void NodeList::insertNode(NodeStruct* _insertedNode){ //insert to 'current.next'
         // _currentNode->_nextNode = _insertedNode;
+        // printf("_currentADDR:  ");
+        cout<<_currentNode<<endl;
+        size++;
         _insertedNode->_previousNode = _currentNode;
         _insertedNode->_nextNode = _currentNode->_nextNode;
-        _currentNode->_nextNode = _insertedNode;
-        size++;
-        _currentNode = _currentNode->_nextNode; //move the pointer to the new node
+        // return;
+
         if (_currentNode->_nextNode == nullptr){
-            _tailNode = _currentNode;
+            _currentNode->_nextNode = _insertedNode;
+            _tailNode = _currentNode->_nextNode;
+            // _currentNode = _currentNode->_nextNode;
+            // printf("YYYYY");
+            return;
         }
+        
+        _currentNode->_nextNode = _insertedNode;
+        _currentNode->_nextNode->_previousNode = _insertedNode;
+        // _currentNode = _currentNode->_nextNode; //move the pointer to the new node
     }
 
 void NodeList::insertNode_pre(NodeStruct* _insertedNode){
@@ -66,11 +76,11 @@ void NodeList::removeNode(){ //default remove 'current' node
         size--;
     }
 void NodeList::traverseNodeList(function<void(NodeStruct*)>traverseOperation){
-    this->_currentNode = this->_headNode;
-    while(this->_currentNode != nullptr){
-        this->_currentNode->isVisited = 1;
-        traverseOperation(_currentNode);
-        this->_currentNode = this->_currentNode->_nextNode;
+    NodeStruct* iter_currentNode = this->_headNode;
+    while(iter_currentNode != nullptr){
+        iter_currentNode->isVisited = 1;
+        traverseOperation(iter_currentNode);
+        iter_currentNode = iter_currentNode->_nextNode;
     }
 }
 NodeStruct* NodeList::NodeList::_getNode(int rank){ //modify 'current'
@@ -87,7 +97,7 @@ NodeStruct* NodeList::_findNode(NodeStruct targetNode) //modify 'current'
     this->_currentNode = this->_headNode;
     while(this->_currentNode != nullptr){
         this->_currentNode->isVisited = 1;
-        if(this->_currentNode->NodeData == targetNode.NodeData)
+        if(this->_currentNode->Data == targetNode.Data)
         {
             return _currentNode;
         }
