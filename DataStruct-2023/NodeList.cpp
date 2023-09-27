@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 18:13:39
- * @LastEditTime: 2023-09-27 09:18:56
+ * @LastEditTime: 2023-09-27 09:28:05
  * @FilePath: /CS-Learning/DataStruct-2023/NodeList.cpp
  * @Description: 
  */
@@ -10,7 +10,7 @@
 NodeList::NodeList(NodeStruct* _headNode){
     this->_headNode = _headNode;
     this->_tailNode = _headNode;
-    size = 0;
+    size = 1;
 }
 void NodeList::insertNode(NodeStruct* _desNode, NodeStruct* _insertedNode){ //insert to 'current.next'
         // _desNode->_nextNode = _insertedNode;
@@ -108,5 +108,5 @@ void NodeList::emptyNodeList(){
     _headNode->_previousNode = nullptr;
     _headNode->_nextNode = nullptr;
     _tailNode = _headNode;
-    size = 0;
+    size = 1;
 }
