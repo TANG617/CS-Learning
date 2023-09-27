@@ -7,7 +7,7 @@ CC = g++
 CFLAGS = -Wall -std=c++11
 
 # 源文件
-SOURCES = main_Stack.cpp NodeStruct.cpp NodeList.cpp Stack.cpp
+SOURCES = Flip.cpp NodeStruct.cpp NodeList.cpp Stack.cpp Queue.cpp
 # Stack.cpp Queue.cpp
 
 # 目标文件

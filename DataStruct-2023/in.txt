@@ -1,15 +1,4 @@
-push
 A
-Q
-1
-push
-S 
-W 
-2
-push
+B 
+C 
 D 
-E 
-3
-pop
-pop
-pop

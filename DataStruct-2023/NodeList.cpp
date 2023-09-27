@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 18:13:39
- * @LastEditTime: 2023-09-27 09:28:05
+ * @LastEditTime: 2023-09-27 13:53:09
  * @FilePath: /CS-Learning/DataStruct-2023/NodeList.cpp
  * @Description: 
  */
@@ -10,7 +10,7 @@
 NodeList::NodeList(NodeStruct* _headNode){
     this->_headNode = _headNode;
     this->_tailNode = _headNode;
-    size = 1;
+    size = 0;
 }
 void NodeList::insertNode(NodeStruct* _desNode, NodeStruct* _insertedNode){ //insert to 'current.next'
         // _desNode->_nextNode = _insertedNode;
@@ -23,6 +23,7 @@ void NodeList::insertNode(NodeStruct* _desNode, NodeStruct* _insertedNode){ //in
 
         if (_desNode->_nextNode == nullptr){
             _desNode->_nextNode = _insertedNode;
+            // cout<<_desNode->Data.name<<" "<<_desNode->_nextNode->Data.name<<endl;
             _tailNode = _desNode->_nextNode;
             // _desNode = _desNode->_nextNode;
             // printf("YYYYY");
@@ -43,6 +44,7 @@ void NodeList::insertNode_hed(NodeStruct* _insertedNode){
     
 }
 void NodeList::insertNode_tal(NodeStruct* _insertedNode){
+    // cout<<_tailNode->_nextNode->Data.name<<endl;
     insertNode(_tailNode,_insertedNode);
     _tailNode = _insertedNode;
 }
@@ -55,6 +57,7 @@ void NodeList::removeNode(NodeStruct* _removedNode){ //default remove '_removedN
         {
            _removedNode->_previousNode->_nextNode = nullptr;
            _tailNode = _removedNode->_previousNode;
+           cout<<_tailNode->Data.name<<endl;
         }
         else{
             _removedNode->_nextNode->_previousNode = _removedNode->_previousNode;
@@ -65,11 +68,12 @@ void NodeList::removeNode(NodeStruct* _removedNode){ //default remove '_removedN
 }
 void NodeList::traverseNodeList(function<void(NodeStruct*)>traverseOperation){
     NodeStruct* iter_currentNode;
-    for(iter_currentNode = _getFrontNode(); size>1 && iter_currentNode!=_tailNode; iter_currentNode = iter_currentNode->_nextNode ){
+    for(iter_currentNode = _getFrontNode(); size>0 && iter_currentNode!=_tailNode; iter_currentNode = iter_currentNode->_nextNode ){
         iter_currentNode->isVisited = 1;
         traverseOperation(iter_currentNode);
+        cout<<"tail: "<<_tailNode->Data.name<<endl;
     }
-    if(size>1) traverseOperation(iter_currentNode);
+    if(size>0) traverseOperation(iter_currentNode);
     
 }
 NodeStruct* NodeList::NodeList::_getNode(int rank){ //modify 'current'
@@ -108,8 +112,8 @@ void NodeList::emptyNodeList(){
     _headNode->_previousNode = nullptr;
     _headNode->_nextNode = nullptr;
     _tailNode = _headNode;
-    size = 1;
+    size = 0;
 }
 bool NodeList::isEmpty(){
-    return !(size > 1);
+    return !(size > 0);
 }

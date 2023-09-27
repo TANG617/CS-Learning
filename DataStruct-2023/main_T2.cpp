@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 19:50:44
- * @LastEditTime: 2023-09-27 00:07:08
+ * @LastEditTime: 2023-09-27 09:51:34
  * @FilePath: /CS-Learning/DataStruct-2023/main_T2.cpp
  * @Description: 
  */
@@ -46,19 +46,12 @@ class Parking{
 
         }
         NodeStruct* _exitPark(){
-            // PStack.popStack();
-            // WQueue.deQueue();
-            // cout<<WQueue._getFront()<<endl;
-            // cout<<PStack._topStack()<<endl;
-            PStack.pushStack(WQueue._getFront());
-            // WQueue.removeNode(WQueue._getFront());
+            PStack.popStack();
+            NodeStruct tempNode = *WQueue._getFront();
+            WQueue.deQueue();
+            PStack.pushStack(&tempNode);
             
-            // cout<<WQueue._getFront()<<endl;
-            // cout<<PStack._topStack()<<endl;
-            
-            
-            
-
+                  
         }
         NodeStruct* _findCar(string* _targetCarID){
             NodeStruct targetCar(_targetCarID);
@@ -70,8 +63,11 @@ class Parking{
 
         }
         void traversePark(){
+            cout<<"----Park----\n";
             PStack.traverseNodeList(traverseOperation);
+            cout<<"----Queue----\n";
             WQueue.traverseNodeList(traverseOperation);
+            cout<<"----END----\n";
         }
         
 };
