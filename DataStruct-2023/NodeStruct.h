@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 16:59:45
- * @LastEditTime: 2023-09-26 22:59:01
+ * @LastEditTime: 2023-09-27 09:34:35
  * @FilePath: /CS-Learning/DataStruct-2023/NodeStruct.h
  * @Description: 
  */
@@ -26,7 +26,7 @@ public:
             // NodeData(string& nodeName, string& nodeTitle, int ID);
             // NodeData(const string& nodeName);
             // NodeData(string& nodeName);
-            NodeData() {}
+            NodeData(){}
     };
     NodeStruct* _previousNode;
     NodeStruct* _nextNode;

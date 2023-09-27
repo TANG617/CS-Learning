@@ -110,3 +110,6 @@ void NodeList::emptyNodeList(){
     _tailNode = _headNode;
     size = 1;
 }
+bool NodeList::isEmpty(){
+    return !(size > 1);
+}

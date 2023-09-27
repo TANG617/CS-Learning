@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 18:13:50
- * @LastEditTime: 2023-09-27 09:15:25
+ * @LastEditTime: 2023-09-27 09:37:08
  * @FilePath: /CS-Learning/DataStruct-2023/NodeList.h
  * @Description: 
  */
@@ -20,7 +20,8 @@ private:
 public:
     NodeStruct* _headNode;
     NodeStruct* _tailNode;
-    int size;   
+    int size;
+    bool isEmpty();
     NodeList(NodeStruct* _headNode);
     NodeList();
     void insertNode(NodeStruct* _desNode, NodeStruct* _insertedNode);

@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 19:50:44
- * @LastEditTime: 2023-09-26 19:39:06
+ * @LastEditTime: 2023-09-27 09:35:49
  * @FilePath: /CS-Learning/DataStruct-2023/main_Stack.cpp
  * @Description: 
  */
@@ -13,7 +13,9 @@ cout<<"NodeData: "<<_currentNode->Data.name<<endl;
 
 int main()
 {
-    NodeStruct::NodeData HeadData("root", "null",0);
+    freopen("in.txt","r",stdin);
+    string NodeDataStr = "root";
+    NodeStruct::NodeData HeadData(&NodeDataStr);
     NodeStruct Head(HeadData);
     Stack parkStack(&Head);
 
@@ -45,7 +47,7 @@ int main()
         }
         else if (op == "top")
         {
-            cout<<parkStack._topStack()->Data.name<<endl;
+            cout<<parkStack._topStack()->Data.name;
             parkStack.traverseNodeList(traverseOperation);
         }
         
