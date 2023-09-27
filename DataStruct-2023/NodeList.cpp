@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 18:13:39
- * @LastEditTime: 2023-09-27 09:12:08
+ * @LastEditTime: 2023-09-27 09:18:56
  * @FilePath: /CS-Learning/DataStruct-2023/NodeList.cpp
  * @Description: 
  */
@@ -69,7 +69,7 @@ void NodeList::traverseNodeList(function<void(NodeStruct*)>traverseOperation){
         iter_currentNode->isVisited = 1;
         traverseOperation(iter_currentNode);
     }
-    traverseOperation(iter_currentNode);
+    if(size>1) traverseOperation(iter_currentNode);
     
 }
 NodeStruct* NodeList::NodeList::_getNode(int rank){ //modify 'current'
@@ -105,7 +105,8 @@ NodeStruct* NodeList::_getTailNode(){
     return _tailNode;
 }
 void NodeList::emptyNodeList(){
-    this->_headNode = _headNode;
-    this->_tailNode = _headNode;
+    _headNode->_previousNode = nullptr;
+    _headNode->_nextNode = nullptr;
+    _tailNode = _headNode;
     size = 0;
 }

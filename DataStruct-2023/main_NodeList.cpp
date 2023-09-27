@@ -1,7 +1,7 @@
 /*
  * @Author: LiTang litang0617@outlook.com
  * @Date: 2023-09-25 19:50:44
- * @LastEditTime: 2023-09-27 09:09:57
+ * @LastEditTime: 2023-09-27 09:18:33
  * @FilePath: /CS-Learning/DataStruct-2023/main_NodeList.cpp
  * @Description: 
  */
@@ -52,6 +52,32 @@ int main()
         List.removeNode(List._getTailNode());
         List.traverseNodeList(traverseOperation);
         // cout<<"head"<<List._getHeadNode()->Data.name<<endl;
+    }
+
+    cout<<"ADD"<<endl;
+    for(int i=0;i<3;i++){
+        string tempName;
+        string tempTitle;
+        int tempID;
+        cin>>tempName>>tempTitle>>tempID;
+
+        // NodeStruct::NodeData tempNodeData(tempName,tempTitle,tempID);
+        NodeStruct::NodeData* _tempNodeData = new NodeStruct::NodeData(&tempName,&tempTitle,tempID);
+        NodeStruct* _tempNode = new NodeStruct(*_tempNodeData);
+        
+
+        // cout<<_tempNode->Data.name<<endl<<_tempNode<<endl;
+        // continue;
+        // NodeStruct* _tempNode = (NodeStruct *)malloc(1 * sizeof(NodeStruct));
+        // NodeStruct::NodeData* _tempNodeData = (NodeStruct::NodeData *)malloc(1 * sizeof(NodeStruct::NodeData));
+
+        // NodeStruct tempNode(tempNodeData);
+        // &_tempNode(tempNodeData);
+        // _tempNode->Data = tempNodeData;
+        List.insertNode_tal(_tempNode);
+        List.traverseNodeList(traverseOperation);
+        cout<<endl;
+        // cout<<List._getHeadNode()->Data.name<<endl;
     }
     
     // traverseOperation(&node);
